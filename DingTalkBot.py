@@ -21,7 +21,7 @@ sentence = euic.get_daily_content()[0]
 # 取得每日图片
 image = euic.get_daily_content()[1]
 # 编辑要发送的信息
-md_message = '### 今天天气  \n  ' \
+md_message = '### 平果天气  \n  ' \
              '##### {forcast}  \n  ' \
              '![picture]({image})  \n  ' \
              '##### {sentence}  \n  '\
