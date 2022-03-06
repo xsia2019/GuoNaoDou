@@ -28,11 +28,11 @@ md_message = '### 今天天气  \n  ' \
     .format(forcast=forcast, image=image, sentence=sentence)
 
 # 接收系统传入的webhook和secret
-pipidou_webhook = sys.argv[1]
-pipidou_secret = sys.argv[2]
+guonaodou_webhook = sys.argv[1]
+guonaodou_secret = sys.argv[2]
 
 # 实例化DingtalkChatbot
-pipidou = DingtalkChatbot(pipidou_webhook, secret=pipidou_secret)
+guonaodou = DingtalkChatbot(guonaodou_webhook, secret=guonaodou_secret)
 
-pipidou.send_text(msg='欢迎使用自动化测试脚本')
-pipidou.send_markdown(title="今天天气", text=md_message, is_at_all=False)
+# 发送消息
+guonaodou.send_markdown(title="今天天气", text=md_message, is_at_all=False)

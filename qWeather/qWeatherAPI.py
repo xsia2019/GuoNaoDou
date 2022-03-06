@@ -3,7 +3,6 @@
 
 
 import requests
-import json
 from bs4 import BeautifulSoup
 from KEY.qweather_key import qweather_key
 
