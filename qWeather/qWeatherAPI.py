@@ -70,7 +70,8 @@ class QWeatherApi:
         return text, temp, feelsLike, windDir, windScale, humidity, fxLink
 
     def get_weather_forecast(self):
-        fxLink = 'https://www.qweather.com/weather/beihai-101301301.html'
+#         fxLink = 'https://www.qweather.com/weather/beihai-101301301.html'     #北海天气
+        fxLink = 'https://www.qweather.com/weather/pingguo-101301007.html'      #平果天气
         result = requests.get(fxLink, headers=self.headers, timeout=30).text
         # soup = BeautifulSoup(result, 'lxml')
         soup = BeautifulSoup(result, 'html.parser')
