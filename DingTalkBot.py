@@ -25,6 +25,7 @@ md_message = '### 平果天气  \n  ' \
              '##### {forcast}  \n  ' \
              '![picture]({image})  \n  ' \
              '##### {sentence}  \n  '\
+             '##### from GitHub Actions.  \n  '\
     .format(forcast=forcast, image=image, sentence=sentence)
 
 # 接收系统传入的webhook和secret
