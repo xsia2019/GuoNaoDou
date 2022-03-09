@@ -2,9 +2,9 @@ name: DingTalkBot
 
 on:
   schedule:
-    - cron: "0 0 * * *"
-    - cron: "0 4 * * *"
-    - cron: "0 10 * * *"
+    - cron: "30 23 * * *"
+    - cron: "30 4 * * *"
+    - cron: "30 10 * * *"
   watch:
     types: [started]
 jobs:
