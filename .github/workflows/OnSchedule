@@ -1,4 +1,4 @@
-name: DingTalkBot
+name: GuoNaoDouBot
 
 on:
   schedule:
