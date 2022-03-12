@@ -13,12 +13,13 @@ from bs4 import BeautifulSoup
 
 
 class QWeatherApi:
-    def __init__(self, qweather_key):
+    def __init__(self, qweather_key, city):
         # 自定义headers
         self.headers = {
             'User-Agent': 'Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/80.0.3987.132 Safari/537.36'}
         self.key = qweather_key
+        self.city = city
 
         # 城市信息查询API链接
         self.url_api_geo = 'https://geoapi.qweather.com/v2/city/lookup?'
@@ -69,9 +70,9 @@ class QWeatherApi:
 
         return text, temp, feelsLike, windDir, windScale, humidity, fxLink
 
-    def get_weather_forecast(self, city):
+    def get_weather_forecast(self):
         # 取得城市的链接
-        fxlink = self.get_city_link(city)
+        fxlink = self.get_city_link()
         result = requests.get(fxlink, headers=self.headers, timeout=30).text
         soup = BeautifulSoup(result, 'lxml')
         # soup = BeautifulSoup(result, 'html.parser')
@@ -79,13 +80,13 @@ class QWeatherApi:
         return weather
 
     # 返回城市的链接
-    def get_city_link(self, city_kw):
+    def get_city_link(self):
         beihai = 'https://www.qweather.com/weather/beihai-101301301.html'     #北海天气
         pingguo = 'https://www.qweather.com/weather/pingguo-101301007.html'  # 平果天气
 
-        if city_kw.lower() == 'beihai':
+        if self.city.lower() == 'beihai':
             return beihai
-        elif city_kw.lower() == 'pingguo':
+        elif self.city.lower() == 'pingguo':
             return pingguo
 
 
