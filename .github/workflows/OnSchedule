@@ -1,10 +1,10 @@
-name: GuoNaoDouBot
+name: weatherBot
 
 on:
   schedule:
-    - cron: "30 23 * * *"
-    - cron: "30 4 * * *"
+    - cron: "30 3 * * *"
     - cron: "30 10 * * *"
+    - cron: "30 23 * * *"
   watch:
     types: [started]
 jobs:
@@ -25,4 +25,4 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Run misson
       run: |
-        python DingTalkBot.py ${{ secrets.guonaodou_webhook }} ${{ secrets.guonaodou_secret }} ${{ secrets.qweather_key }}
+        python weatherbot.py ${{ secrets.guonaodou_webhook }} ${{ secrets.guonaodou_secret }} ${{ secrets.qweather_key }}
