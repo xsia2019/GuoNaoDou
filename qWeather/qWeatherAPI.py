@@ -69,14 +69,25 @@ class QWeatherApi:
 
         return text, temp, feelsLike, windDir, windScale, humidity, fxLink
 
-    def get_weather_forecast(self):
-#         fxLink = 'https://www.qweather.com/weather/beihai-101301301.html'     #北海天气
-        fxLink = 'https://www.qweather.com/weather/pingguo-101301007.html'      #平果天气
-        result = requests.get(fxLink, headers=self.headers, timeout=30).text
-        # soup = BeautifulSoup(result, 'lxml')
-        soup = BeautifulSoup(result, 'html.parser')
+    def get_weather_forecast(self, city):
+        # 取得城市的链接
+        fxlink = self.get_city_link(city)
+        result = requests.get(fxlink, headers=self.headers, timeout=30).text
+        soup = BeautifulSoup(result, 'lxml')
+        # soup = BeautifulSoup(result, 'html.parser')
         weather = soup.find('div', class_='current-abstract').text.strip()
         return weather
+
+    # 返回城市的链接
+    def get_city_link(self, city_kw):
+        beihai = 'https://www.qweather.com/weather/beihai-101301301.html'     #北海天气
+        pingguo = 'https://www.qweather.com/weather/pingguo-101301007.html'  # 平果天气
+
+        if city_kw.lower() == 'beihai':
+            return beihai
+        elif city_kw.lower() == 'pingguo':
+            return pingguo
+
 
 
 
